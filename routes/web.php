@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get("users", function () {
+Route::get("/users", function () {
     return User::all();
 });
+
+Route::get("/read_cpu", [FileController::class, "read_cpu_info"]);
+Route::get("/read_mem", [FileController::class, "read_mem_info"]);

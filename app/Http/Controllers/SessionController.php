@@ -32,7 +32,7 @@ class SessionController extends Controller
             "id" => "required|integer|exists:id, users"
         ]);
 
-        $user = User::find($id);
+        $user = User::where("id", $id)->first();;
 
         $user->tokens()->delete();
 

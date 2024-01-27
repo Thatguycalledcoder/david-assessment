@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Sanctum\HasApiTokens;
 
 class SessionController extends Controller
 {
+    public static function checkValidation($validator) {
+        if ($validator->fails()) {
+            return response()->json([
+                "success" => false,
+                "errors" => $validator->errors()
+            ], 422);
+        }
+    }
+
     public function login() {
         $input = request()->validate([
             'email' => 'required|email',
@@ -42,10 +52,17 @@ class SessionController extends Controller
     }
 
     public function register() {
-        $input = request()->validate([
-            "email" => "required|email|unique:users,email",
+        $validator = Validator::make(request()->all(), [
+            "email" => "required|email",
             "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/"
         ]);
+
+        $status = SessionController::checkValidation($validator);
+        if ($status) {
+            return $status;
+        }
+
+        $input = request()->only(["email", "password"]);
 
         User::create($input);
 

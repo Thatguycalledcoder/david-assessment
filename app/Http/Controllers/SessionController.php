@@ -14,7 +14,7 @@ class SessionController extends Controller
             return response()->json([
                 "success" => false,
                 "errors" => $validator->errors()
-            ], 422);
+            ], 200);
         }
     }
 

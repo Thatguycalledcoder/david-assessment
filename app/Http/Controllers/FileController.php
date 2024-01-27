@@ -43,7 +43,7 @@ class FileController extends Controller
 
     public function read_storage_info() {
         // Indexs for storage: 0 - Size; 1 - Used; 2- Free
-        $storagestats = explode(" ",shell_exec("df -h | sed -n '3p'"));
+        $storagestats = shell_exec("df -h | sed -n '3p'");
 
         return response()->json([
             "success" => true,

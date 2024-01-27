@@ -29,7 +29,7 @@ class SessionController extends Controller
     public function logout()
     {
         $id = request()->validate([
-            "id" => "required|integer|exists:id, users"
+            "id" => "required|integer|exists:users,id"
         ]);
 
         $user = User::where("id", $id)->first();;

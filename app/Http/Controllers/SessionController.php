@@ -53,7 +53,7 @@ class SessionController extends Controller
 
     public function register() {
         $validator = Validator::make(request()->all(), [
-            "email" => "required|email",
+            "email" => "required|email|unique:users,email",
             "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/"
         ]);
 

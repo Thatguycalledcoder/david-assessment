@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get("/read_cpu", [FileController::class, "read_cpu_info"]);
 Route::get("/read_mem", [FileController::class, "read_mem_info"]);
+Route::get("/read_cpu_mem", [FileController::class, "read_cpu_mem_info"]);

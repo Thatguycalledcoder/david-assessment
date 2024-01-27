@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get("/read_cpu_mem", [FileController::class, "read_cpu_mem_info"]);
 Route::get("/read_storage", [FileController::class, "read_storage_info"]);
+Route::post("/register", [SessionController::class, "register"]);

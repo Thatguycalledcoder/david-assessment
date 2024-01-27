@@ -20,9 +20,33 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function update_email() {}
+    public function update_email() {
+        $data = request()->validate([
+            "id" => "required|integer|exists:users,id",
+            "old_email" => "required|email|exists:users,email",
+            "new_email" => "required|email"
+        ]);
 
-    public function update_password() {}
+        $user = User::where('id', $data["id"])->where('email', $data["old_email"])->first();
+
+        $user["email"] = $data["new_email"];    
+
+        $user->save();
+    }
+
+    public function update_password() {
+        $data = request()->validate([
+            "id" => "required|integer|exists:users,id",
+            "old_password" => "required|string|exists:users,password",
+            "new_password" => "required|string"
+        ]);
+
+        $user = User::where('id', $data["id"])->where('password', $data["old_password"])->first();
+
+        $user["password"] = $data["new_password"];    
+
+        $user->save();
+    }
 
     public function remove() {}
 }

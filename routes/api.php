@@ -23,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/read_cpu_mem", [FileController::class, "read_cpu_mem_info"]);
 Route::get("/read_storage", [FileController::class, "read_storage_info"]);
 Route::post("/register", [SessionController::class, "register"]);
+Route::post("/login", [SessionController::class, "login"]);
+Route::post("/logout", [SessionController::class, "logout"]);

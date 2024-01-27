@@ -36,6 +36,8 @@ class SessionController extends Controller
 
         $user->tokens()->delete();
 
+        auth()->logout();
+
         return response()->json(['message' => 'Logged out successfully'], 200);
     }
 

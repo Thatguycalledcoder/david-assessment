@@ -28,11 +28,13 @@ class SessionController extends Controller
 
     public function logout()
     {
-        if(method_exists(auth()->user()->currentAccessToken(), 'delete')) {
-            auth()->user()->currentAccessToken()->delete();
-        }
-        
-        auth()->guard('web')->logout();
+        $id = request()->validate([
+            "id" => "required|integer|exists:id, users"
+        ]);
+
+        $user = User::find($id);
+
+        $user->tokens()->delete();
 
         return response()->json(['message' => 'Logged out successfully'], 200);
     }

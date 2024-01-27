@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Laravel\Sanctum\HasApiTokens;
 
 class SessionController extends Controller
 {
@@ -27,7 +28,7 @@ class SessionController extends Controller
 
     public function logout()
     {
-        auth()->user()->tokens()->delete();; // Revoke all tokens for the user
+        auth()->user()>tokens()->where('id', auth()->id())->delete(); // Revoke all tokens for the user
 
         return response()->json(['message' => 'Logged out successfully'], 200);
     }

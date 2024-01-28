@@ -20,7 +20,7 @@ class SessionController extends Controller
 
     public function login() {
         $validator = Validator::make(request()->all(), [
-            "email" => "required|email|unique:users,email|max:255",
+            "email" => "required|email|exists:users,email|max:255",
             "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/|max:255"
         ]);
 

@@ -19,12 +19,17 @@ class SessionController extends Controller
     }
 
     public function login() {
-        $input = request()->validate([
-            'email' => 'required|email|max:255',
-            'password' => 'required|string|max:255',
+        $validator = Validator::make(request()->all(), [
+            "email" => "required|email|unique:users,email|max:255",
+            "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/|max:255"
         ]);
 
-        $data = request()->all();
+        $status = SessionController::checkValidation($validator);
+        if ($status) {
+            return $status;
+        }
+
+        $data = request()->only(["email", "password"]);
     
         if (auth()->attempt($data)) {
             $user = User::where('email', $data['email'])->first();
@@ -34,21 +39,27 @@ class SessionController extends Controller
                 'success' => true, 
                 'token' => $token->plainTextToken,
                 "id" => $user->id,
+                "user" => $user
             ], 200);
         }
     
-        return response()->json(['success' => false, 'message' => 'Login failed. Invalid credentials.'], 401);
+        return response()->json(['success' => false, 'message' => 'Login failed. Invalid credentials.'], 200);
     }
 
     public function logout()
     {
-        $id = request()->validate([
+        $validator = Validator::make(request()->all(), [
             "id" => "required|integer|exists:users,id|max:255"
         ]);
 
-        $user = User::where("id", auth()->id())->first();;
-        
-        // $user->currentAccessToken()->delete();
+        $status = SessionController::checkValidation($validator);
+        if ($status) {
+            return $status;
+        }
+
+        $id = request()->only("id");
+
+        $user = User::where("id", $id)->first();
 
         auth()->logout();
 

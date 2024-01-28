@@ -20,8 +20,8 @@ class SessionController extends Controller
 
     public function login() {
         $input = request()->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
+            'email' => 'required|email|max:255',
+            'password' => 'required|string|max:255',
         ]);
 
         $data = request()->all();
@@ -30,7 +30,11 @@ class SessionController extends Controller
             $user = User::where('email', $data['email'])->first();
             $token = $user->createToken('authToken', ['server:read', 'server:write']);
     
-            return response()->json(['success' => true, 'token' => $token->plainTextToken], 200);
+            return response()->json([
+                'success' => true, 
+                'token' => $token->plainTextToken,
+                "id" => $user->id,
+            ], 200);
         }
     
         return response()->json(['success' => false, 'message' => 'Login failed. Invalid credentials.'], 401);
@@ -38,12 +42,12 @@ class SessionController extends Controller
 
     public function logout()
     {
-        $user = User::where("id", auth()->id())->first();
-        if (!$user)
-            return response()->json([
-                'success' => false,
-                'message' => 'User not found.'
-            ], 200);
+        $id = request()->validate([
+            "id" => "required|integer|exists:users,id|max:255"
+        ]);
+
+        $user = User::where("id", auth()->id())->first();;
+        
 
         $user->tokens()->delete();
 
@@ -57,8 +61,8 @@ class SessionController extends Controller
 
     public function register() {
         $validator = Validator::make(request()->all(), [
-            "email" => "required|email|unique:users,email",
-            "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/"
+            "email" => "required|email|unique:users,email|max:255",
+            "password" => "required|string|min:7|regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/|max:255"
         ]);
 
         $status = SessionController::checkValidation($validator);

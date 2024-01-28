@@ -38,17 +38,21 @@ class SessionController extends Controller
 
     public function logout()
     {
-        $id = request()->validate([
-            "id" => "required|integer|exists:users,id"
-        ]);
-
-        $user = User::where("id", $id)->first();;
+        $user = User::where("id", auth()->id())->first();
+        if (!$user)
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found.'
+            ], 200);
 
         $user->tokens()->delete();
 
         auth()->logout();
 
-        return response()->json(['message' => 'Logged out successfully'], 200);
+        return response()->json([
+            'success' => true,
+            'message' => 'Logged out successfully'
+        ], 200);
     }
 
     public function register() {

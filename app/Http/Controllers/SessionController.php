@@ -48,8 +48,7 @@ class SessionController extends Controller
 
         $user = User::where("id", auth()->id())->first();;
         
-
-        $user->tokens()->delete();
+        // $user->currentAccessToken()->delete();
 
         auth()->logout();
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,6 @@ Route::get("/read_storage", [FileController::class, "read_storage_info"]);
 Route::post("/register", [SessionController::class, "register"]);
 Route::post("/login", [SessionController::class, "login"]);
 Route::post("/logout", [SessionController::class, "logout"]);
+Route::post("/change_email", [UserController::class, "update_email"]);
+Route::post("/change_password", [UserController::class, "update_password"]);
+Route::post('/delete', [UserController::class, "delete"]);

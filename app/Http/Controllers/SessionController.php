@@ -86,7 +86,7 @@ class SessionController extends Controller
 
         return response()->json([
             "success" => true,
-            "message" => "User created successfully"
+            "message" => "Account created successfully"
         ],200);
     }
 }

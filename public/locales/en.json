@@ -1,0 +1,55 @@
+{
+    "Login-head": "Sign in to your account",
+    "Email": "Email address",
+    "Password": "Password",
+    "Confirm Password": "Confirm Password",
+    "Login": "Sign In",
+    "Login redirect": "Sign up here",
+    "Account create": "Account created successfully",
+
+    "Register-head": "Let's get started! Sign up here",
+    "Register": "Sign Up",
+    "Register question": "Already signed up?",
+    "Register redirect": "Login here",
+    "Password mismatch": "Password and confirmation password do not match.",
+
+    "CPU": "CPU",
+    "Number of cores": "Number of cores",
+    "CPU view": "CPU Utilization View",
+    "Overall view": "Overall",
+    "Viea all": "View all cores",
+    "CPU title": "CPU Utilization",
+
+    "Memory": "Memory",
+    "Memory title": "Total Memory",
+    "Used Memory": "Used Memory",
+
+    "Storage": "Storage",
+    "Storage title": "Total Storage",
+    "Used": "Used",
+    "Available": "Available",
+
+    "Dashboard": "Dashboard",
+    "Settings": "Settings",
+    "Log out": "Log out",
+
+    "Delete Account": "Delete Account",
+    "Current Email": "Current Email",
+    "Change Email": "Change Email",
+    "New Email Address": "New Email Address",
+    "Change Password": "Change Password",
+    "Old Password": "Old Password",
+    "New Password": "New Password",
+    "Confirm New Password": "Confirm New Password",
+    "Delete Account Warning": "Delete Account Warning",
+    "Delete Warning": "Are you sure you want to delete your account?",
+    "No": "No",
+    "Yes": "Yes",
+
+    "Email change failed": "Email change failed",
+    "Email changed successfully": "Email changed successfully",
+    "Change password mismatch": "New password and password confirmation do not match.",
+    "Change password fail": "Password change failed. Try again later.",
+    "Change password success": "Password changed successfully",
+    "Account delete": "Account deleted successfully"
+}

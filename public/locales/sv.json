@@ -1,0 +1,55 @@
+{
+  "Login-head": "Logga in på ditt konto",
+  "Email": "E-postadress",
+  "Password": "Lösenord",
+  "Confirm Password": "Bekräfta lösenord",
+  "Login": "Logga in",
+  "Login redirect": "Registrera dig här",
+  "Account create": "Konto skapat",
+
+  "Register-head": "Nu kör vi! Registrera dig här",
+  "Register": "Registrera",
+  "Register question": "Redan registrerad?",
+  "Register redirect": "Logga in här",
+  "Password mismatch": "Lösenorden matchar inte.",
+
+  "CPU": "CPU",
+  "Number of cores": "Antal kärnor",
+  "CPU view": "CPU-användningsvy",
+  "Overall view": "Sammanfattning",
+  "Viea all": "Visa alla kärnor",
+  "CPU title": "CPU-användning",
+
+  "Memory": "Minne",
+  "Memory title": "Totalt minne",
+  "Used Memory": "Använt minne",
+
+  "Storage": "Lagring",
+  "Storage title": "Total lagring",
+  "Used": "Använt",
+  "Available": "Tillgängligt",
+
+  "Dashboard": "Översikt",
+  "Settings": "Inställningar",
+  "Log out": "Logga ut",
+
+  "Delete Account": "Ta bort konto",
+  "Current Email": "Nuvarande e-postadress",
+  "Change Email": "Ändra e-postadress",
+  "New Email Address": "Ny e-postadress",
+  "Change Password": "Ändra lösenord",
+  "Old Password": "Gammalt lösenord",
+  "New Password": "Nytt lösenord",
+  "Confirm New Password": "Bekräfta nytt lösenord",
+  "Delete Account Warning": "Varning för borttagning av konto",
+  "Delete Warning": "Är du säker på att du vill ta bort ditt konto?",
+  "No": "Nej",
+  "Yes": "Ja",
+
+  "Email change failed": "E-postbyte misslyckades",
+  "Email changed successfully": "E-post ändrad",
+  "Change password mismatch": "Nya lösenord matchar inte.",
+  "Change password fail": "Lösenordsbyte misslyckades. Försök igen senare.",
+  "Change password success": "Lösenord ändrat",
+  "Account delete": "Konto borttaget"
+}

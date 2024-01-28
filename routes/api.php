@@ -28,4 +28,4 @@ Route::post("/login", [SessionController::class, "login"]);
 Route::post("/logout", [SessionController::class, "logout"]);
 Route::post("/change_email", [UserController::class, "update_email"]);
 Route::post("/change_password", [UserController::class, "update_password"]);
-Route::post('/delete', [UserController::class, "delete"]);
+Route::post('/delete', [UserController::class, "remove"]);

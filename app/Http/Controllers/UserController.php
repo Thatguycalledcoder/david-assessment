@@ -47,7 +47,8 @@ class UserController extends Controller
 
         return response()->json([
             "success" => true,
-            "message" => "Email changed successfully"
+            "message" => "Email changed successfully",
+            "email" => $data["new_email"],
         ], 200);
     }
 
